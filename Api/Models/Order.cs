@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Api.Models
+﻿namespace Api.Models
 {
-    using System.Security.AccessControl;
-
     public class Order
     {
         public int OrderId { get; set; }

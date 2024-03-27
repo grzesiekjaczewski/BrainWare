@@ -3,7 +3,7 @@
     using System.Data;
     using Models;
 
-    public class OrderService
+    public class OrderService : IOrderService
     {
         public List<Order> GetOrdersForCompany(int CompanyId)
         {
