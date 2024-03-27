@@ -1,15 +1,14 @@
-﻿namespace Api.Models
+﻿namespace Api.Models;
+
+public partial class Order
 {
-    public class Order
-    {
-        public int OrderId { get; set; }
+    public int OrderId { get; set; }
 
-        public string CompanyName { get; set; }
+    public string Description { get; set; } = null!;
 
-        public string Description { get; set; }
+    public int CompanyId { get; set; }
 
-        public decimal OrderTotal { get; set; }
+    public virtual Company Company { get; set; } = null!;
 
-        public List<OrderProduct> OrderProducts { get; set; }
-    }
+    public virtual ICollection<Orderproduct> Orderproducts { get; set; } = new List<Orderproduct>();
 }

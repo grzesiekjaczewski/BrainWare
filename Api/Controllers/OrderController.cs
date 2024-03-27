@@ -18,7 +18,7 @@
         [HttpGet]
         [Route("order/{id}")]
 
-        public IEnumerable<Order> GetOrders(int id = 1)
+        public IEnumerable<OldOrder> GetOrders(int id = 1)
         {
             return _orderService.GetOrdersForCompany(id);
         }

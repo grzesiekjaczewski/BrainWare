@@ -1,13 +1,13 @@
 ﻿namespace Api.Infrastructure
 {
     using System.Data;
+    using Microsoft.EntityFrameworkCore;
     using Models;
 
     public class OrderService : IOrderService
     {
-        public List<Order> GetOrdersForCompany(int CompanyId)
+        public List<OldOrder> GetOrdersForCompany(int CompanyId)
         {
-
             var database = new Database();
 
             // Get the orders
@@ -16,18 +16,18 @@
 
             var reader1 = database.ExecuteReader(sql1);
 
-            var values = new List<Order>();
+            var values = new List<OldOrder>();
             
             while (reader1.Read())
             {
                 var record1 = (IDataRecord) reader1;
 
-                values.Add(new Order()
+                values.Add(new OldOrder()
                 {
                     CompanyName = record1.GetString(0),
                     Description = record1.GetString(1),
                     OrderId = record1.GetInt32(2),
-                    OrderProducts = new List<OrderProduct>()
+                    OrderProducts = new List<OldOrderProduct>()
                 });
 
             }
@@ -40,19 +40,19 @@
 
             var reader2 = database.ExecuteReader(sql2);
 
-            var values2 = new List<OrderProduct>();
+            var values2 = new List<OldOrderProduct>();
 
             while (reader2.Read())
             {
                 var record2 = (IDataRecord)reader2;
 
-                values2.Add(new OrderProduct()
+                values2.Add(new OldOrderProduct()
                 {
                     OrderId = record2.GetInt32(1),
                     ProductId = record2.GetInt32(2),
                     Price = record2.GetDecimal(0),
                     Quantity = record2.GetInt32(3),
-                    Product = new Product()
+                    Product = new OldProduct()
                     {
                         Name = record2.GetString(4),
                         Price = record2.GetDecimal(5)

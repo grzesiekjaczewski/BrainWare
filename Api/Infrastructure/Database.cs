@@ -12,7 +12,7 @@
             // var connectionString = "Data Source=LOCALHOST;Initial Catalog=BrainWare;Integrated Security=SSPI";
             var mdf = @"D:\BrainWere\BrainWare.mdf";
             //var connectionString = $"Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=BrainWAre;Integrated Security=SSPI;AttachDBFilename={mdf}";
-            var connectionString = $"Data Source=DESKTOP-ADU4H54\\MSSQL2022;Initial Catalog=BrainWAre;Integrated Security=SSPI;AttachDBFilename={mdf}";
+            var connectionString = $"Data Source=DESKTOP-ADU4H54\\MSSQL2022;Initial Catalog=BrainWAre;Integrated Security=SSPI";
 
             _connection = new SqlConnection(connectionString);
 
