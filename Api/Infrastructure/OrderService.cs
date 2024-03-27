@@ -6,6 +6,11 @@
 
     public class OrderService : IOrderService
     {
+        private readonly BrainWareContext _context;
+        public OrderService(BrainWareContext context) 
+        {
+            _context = context;
+        }
         public List<OldOrder> GetOrdersForCompany(int CompanyId)
         {
             var database = new Database();

@@ -1,4 +1,6 @@
 using Api.Infrastructure;
+using Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderService, OrderService>();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Add DbContext or other services using the connection string
+builder.Services.AddDbContext<BrainWareContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
