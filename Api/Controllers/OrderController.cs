@@ -17,10 +17,18 @@
 
         [HttpGet]
         [Route("order/{id}")]
-
-        public IEnumerable<OrderResult> GetOrders(int id = 1)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<OrderResult>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetOrders(int id = 1)
         {
-            return _orderService.GetOrdersForCompany(id);
+            IEnumerable<OrderResult> result = _orderService.GetOrdersForCompany(id);
+
+            if (!result.Any()) 
+            {
+                return NotFound(new { message = "Orders not found"});
+            }
+
+            return Ok(result);
         }
     }
 }
