@@ -1,25 +1,17 @@
 ﻿namespace Api.Infrastructure
 {
-    using System.Data;
-    using Microsoft.EntityFrameworkCore;
     using Models;
 
     public class OrderService : IOrderService
     {
-        private readonly BrainWareContext _context;
-        public OrderService(BrainWareContext context) 
+        private readonly IEntityHandler _entityHandler;
+        public OrderService(IEntityHandler entityHandler) 
         {
-            _context = context;
+            _entityHandler = entityHandler;
         }
         public List<OrderResult> GetOrdersForCompany(int CompanyId)
         {
-
-            List<Order> orders = _context.Orders
-                .Include(o => o.Company)
-                .Include(o => o.Orderproducts)
-                    .ThenInclude(op => op.Product)
-                .Where(e => e.CompanyId == CompanyId)
-                .ToList();
+            List<Order> orders = _entityHandler.GetOrdersForCompany(CompanyId);
 
             var orderResults = new List<OrderResult>();
 
