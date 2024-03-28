@@ -1,6 +1,6 @@
 ﻿namespace Api.Models
 {
-    public class OldOrder
+    public class OrderResult
     {
         public int OrderId { get; set; }
 
@@ -10,6 +10,6 @@
 
         public decimal OrderTotal { get; set; }
 
-        public List<OldOrderProduct> OrderProducts { get; set; }
+        public List<OrderProductResult> OrderProducts { get; set; }
     }
 }

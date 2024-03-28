@@ -4,6 +4,6 @@ namespace Api.Infrastructure
 {
     public interface IOrderService
     {
-        List<OldOrder> GetOrdersForCompany(int CompanyId);
+        List<OrderResult> GetOrdersForCompany(int CompanyId);
     }
 }

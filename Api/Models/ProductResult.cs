@@ -1,6 +1,6 @@
 ﻿namespace Api.Models
 {
-    public class OldProduct
+    public class ProductResult
     {
         public string Name { get; set; }
 
