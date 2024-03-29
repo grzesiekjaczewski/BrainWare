@@ -6,7 +6,7 @@
 
         public int ProductId { get; set; }
 
-        public ProductResult Product { get; set; }
+        public ProductResult? Product { get; set; }
 
         public int Quantity { get; set; }
 

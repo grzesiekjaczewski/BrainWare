@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
   standalone: true,
@@ -13,10 +13,15 @@ import { RouterModule } from '@angular/router';
 export class AppComponent {
   orders: any[] = [];
   year = new Date().getFullYear();
+  title: string = 'List of orders';
 
-  constructor(http: HttpClient) {
-    http.get<any>('/api/order/1').subscribe((orders) => {
-      this.orders = orders;
+  constructor(private apiService: ApiService) {
+    this.fetchOrders();
+  }
+
+  private fetchOrders(): void {
+    this.apiService.getOrders(1).subscribe((data) => {
+      this.orders = data;
     });
   }
 }
